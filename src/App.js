@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
-import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Leaderboard from './pages/Leaderboard';
 
@@ -9,10 +9,10 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path='/' element={<Home />} />
+          <Route exact path='/' element={<Landing />} />
           <Route path='/login' element={<Login />} />
           <Route path='/leaderboard' element={<Leaderboard />} />
-          <Route path="*" element={<Home/>} />
+          <Route path="*" element={<Landing/>} />
         </Routes>
       </Router>
     </>
