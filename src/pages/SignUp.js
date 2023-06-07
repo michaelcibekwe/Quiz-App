@@ -1,19 +1,8 @@
 import React from 'react';
-import { Formik, Form, useField, ErrorMessage } from 'formik';
+import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
-const MyTextInput = ({label, ...props }) => {
-    const [field, meta] = useField(props);
-    return (
-        <>
-        <label htmlFor={props.id || props.name}>{label}</label>
-        <input className="text-input" {...field} {...props} />
-        {meta.touched && meta.error ? (
-            <div className="error">{meta.error}</div>
-        ) : null}
-        </>
-    );
-};
+import { TextField, Button, Grid, Paper } from '@mui/material';
 
 const SignUp = () => {
     const formikProps = {
@@ -42,36 +31,85 @@ const SignUp = () => {
         },
     }
     
+    const paperStyle = {
+        padding: 20,
+        height: '80vh',
+        width: 350,
+        margin: "20px auto"
+    }
+
     return (
+        <>
         <Formik {...formikProps}>
+            {({ errors, touched}) => (
             <Form>
-                <MyTextInput
-                    label="Username" 
-                    name="username"
-                    type="text"
-                />
+                <Grid align='center'>
+                    <Paper 
+                        elevation={10}
+                        style={paperStyle}
+                    >
+                        <div>
+                            <h2> Sign Up </h2>
+                            <span>Already have an account? </span>
+                            <Link to="/login">Login</Link>
+                        </div>
+                        <Field
+                            as={TextField}
+                            label="Username" 
+                            name="username"
+                            type="text"
+                            margin="normal"
+                            fullWidth
+                            error={errors.username && touched.username}
+                            helperText={errors.username && touched.username ? errors.username : null}
+                        />
 
-                <MyTextInput
-                    label="E-mail" 
-                    name="email"
-                    type="email"
-                />
+                        <Field
+                            as={TextField}
+                            label="E-mail" 
+                            name="email"
+                            type="email"
+                            fullWidth
+                            margin="normal"
+                            error={errors.email && touched.email}
+                            helperText={errors.email && touched.email ? errors.email : null}
+                        />
 
-                <MyTextInput
-                    label="Password" 
-                    name="password"
-                    type="text"
-                />
+                        <Field
+                            as={TextField}
+                            label="Password"
+                            name="password"
+                            type="text"
+                            margin="normal"
+                            fullWidth
+                            error={errors.password && touched.password}
+                            helperText={errors.password && touched.password ? errors.password : null}
+                        />
 
-                <MyTextInput
-                    label="Confirm Password" 
-                    name="confirm"
-                    type="password"
-                />
+                        <Field
+                            as={TextField}
+                            label="Confirm Password" 
+                            name="confirm"
+                            type="password"
+                            margin="normal"
+                            fullWidth
+                            error={errors.confirm && touched.confirm}
+                            helperText={errors.confirm && touched.confirm ? errors.confirm : null}
+                        />
 
-                <button type="submit">Sign Up</button>
+                        <Button 
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                        >
+                            Sign Up
+                        </Button>
+                    </Paper> 
+                </Grid>
             </Form>
+            )}
         </Formik>
+        </>
     )
 };
 

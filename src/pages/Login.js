@@ -1,9 +1,11 @@
 import React from "react";
-import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { Link } from "react-router-dom";
+import { TextField, Button, Grid, Paper } from "@mui/material";
 
 const Login = () => {
-    const formik = useFormik({
+    const formikProps = {
         initialValues: {
             username: '',
             password: ''
@@ -19,31 +21,62 @@ const Login = () => {
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
-    });
+    };
+    
+    const paperStyle = {
+        padding: 20,
+        height: '80vh',
+        width: 350,
+        margin: "20px auto"
+    }
+
     return (
         <>
-        <div>
-            <h1> Login </h1>
-        </div>
-        <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="username">Username</label>
-            <input
-                id="username"
-                type="text"
-                {...formik.getFieldProps('username')}
-            />
-            {formik.errors.username && formik.touched.username ? (<div>{formik.errors.username}</div>) : null}
+        <Grid align='center'>
+            <Paper
+                elevation={10}
+                style={paperStyle}
+            >
+                <div>
+                <h2> Login </h2>
+                <span>Don't have an account? </span>
+                <Link to="/signup">Sign Up!</Link>
+                </div>
+                <Formik {...formikProps}>
+                    {({ errors, touched}) => (
+                    <Form>
+                        <Field
+                            as={TextField}
+                            id="outlined"
+                            label="Username" 
+                            name="username"
+                            margin="normal"
+                            fullWidth
+                            required
+                        />
 
-            <label htmlFor="password">Password</label>
-            <input
-                id="password"
-                type="password"
-                {...formik.getFieldProps('password')}
-            />
-            {formik.errors.password && formik.touched.password ? (<div>{formik.errors.password}</div>) : null}
-
-            <button type="submit">Submit</button>
-        </form>
+                        <Field
+                            as={TextField}
+                            label="Password" 
+                            name="password"
+                            type="password"
+                            margin="normal"
+                            fullWidth
+                            required
+                        />
+                    
+                        <Button 
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                        >
+                            Sign In
+                        </Button>
+                    </Form>
+                    )}
+                </Formik>
+            </Paper>
+        </Grid>
         </>
     );
 };
