@@ -16,6 +16,9 @@ const Landing = () => {
                 <li>
                     <Link to="/leaderboard">Leaderboards</Link>
                 </li>
+                <li>
+                    <Link to="/signup">Sign Up</Link>
+                </li>
             </u1>
         </div>
     );
