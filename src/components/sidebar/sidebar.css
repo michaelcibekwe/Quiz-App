@@ -1,0 +1,50 @@
+.sidebar
+{
+    flex: 1;
+    min-height: 100vh;
+    border-right: 0.5px solid rgb(0, 0, 0);
+    background-color: rgb(219, 246, 255);
+
+    .top{
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .logo{
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+    }
+
+    .center{
+        padding-left: 10px;
+
+        .slist{
+            list-style-type: none; 
+            margin: 0;
+            padding: 0;
+        }
+    
+        .slist li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            cursor: pointer;
+
+            &:hover{
+                background-color: aliceblue;
+            }
+        }
+
+        .slist li span{
+            font-size: 13px;
+            font-weight: 600;
+            color: gray;
+        }
+    }
+
+
+}
