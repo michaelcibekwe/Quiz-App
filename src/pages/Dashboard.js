@@ -67,7 +67,7 @@ const rows = [
                 <Button color="inherit">Take Quiz</Button>
             </Toolbar>
         </AppBar>
-      
+
       <Toolbar />
 
       <Container maxWidth="lg">
