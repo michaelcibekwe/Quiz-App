@@ -15,6 +15,8 @@ import { AppBar,
     TablePagination,
     TableRow
      } from '@mui/material';
+import Navbar from '../components/navbar/Navbar';
+
 
 const columns = [
     { id: 'name', label: 'Quiz Name', minWidth: 200 },
@@ -58,17 +60,7 @@ const rows = [
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="fixed">
-            <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
-                    Dashboard
-                </Typography>
-                <Button color="inherit">New Quiz</Button>
-                <Button color="inherit">Take Quiz</Button>
-            </Toolbar>
-        </AppBar>
-
-      <Toolbar />
+       <Navbar />
 
       <Container maxWidth="lg">
         <Grid container spacing={2}>
