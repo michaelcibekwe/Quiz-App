@@ -6,11 +6,31 @@ import Leaderboard from './pages/Leaderboard';
 import SignUp from "./pages/SignUp";
 import Dashboard from './pages/Dashboard';
 import Quiz from './pages/Quiz';
+import { ThemeProvider } from '@emotion/react';
+import { createTheme } from '@mui/material';
+import Navbar from './components/navbar/Navbar';
+
+const theme = createTheme({
+    palette: {
+        mode: 'light',
+        primary: {
+          main: '#2F4858',
+        },
+        secondary: {
+          main: '#86BBD8',
+          contrastText: 'rgba(253,253,253,0.87)',
+        },
+        background: {
+          paper: '#EFF1ED',
+        },
+      },
+    });
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Router>
+        <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
@@ -21,7 +41,7 @@ function App() {
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>
-    </>
+    </ThemeProvider>
   );
 }
 

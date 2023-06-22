@@ -1,10 +1,11 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 const Leaderboard = () => {
     return (
-        <div>
+        <Box>
             <h1> Leaderboard </h1>
-        </div>
+        </Box>
     );
 };
 

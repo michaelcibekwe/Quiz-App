@@ -1,27 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { Route, Link } from "react-router-dom";
 import { AppBar, Typography, Tabs, Tab, Toolbar, IconButton, Box, Menu, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
-function LinkTab(props) {
-    return (
-        <Tab
-            component="a"
-            onClick={(event) => {
-                event.preventDefault();
-            }}
-            {...props}
-        />
-    );
-}
-
 const Navbar = () => {
-const [auth, setAuth] = React.useState(true);
-const [anchorEl, setAnchorEl] = React.useState(null);
-const [value, setValue] = React.useState(0);
-
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
+const [anchorEl, setAnchorEl] = useState(null);
+const [value, setValue] = useState(0);
     
     const handleChangePage = (event, newValue) => {
         setValue(newValue);
@@ -38,15 +22,23 @@ const [value, setValue] = React.useState(0);
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="sticky">
-            <Toolbar>
+            <Toolbar variant="dense">
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
                     QuizApp
                 </Typography>
-                <Tabs value={value} onChange={handleChangePage} aria-label="nav tabs">
-                    <LinkTab className="tabs" label="Home" href="/dashboard"/>
-                    <LinkTab className="tabs" label="Quizzes" href="/quiz"/>
+                <Tabs value={value} 
+                    onChange={handleChangePage} 
+                    aria-label="nav tabs"
+                    textColor="white"
+                    indicatorColor="secondary"
+                >
+                    <Tab className="tabs" component={Link} label="Home" to="/dashboard"/>
+                    <Tab className="tabs" component={Link} label="Home" to="/" />
+                    <Tab className="tabs" component={Link} label="Quizzes" to="/quiz"/>
+                    <Tab className="tabs" component={Link} label="Log In" to="/login" />
+                    <Tab className="tabs" component={Link} label="Sign Up" to="/signup" />
+                    <Tab className="tabs" component={Link} label="Leaderboards" to="/leaderboard" />
                 </Tabs>
-            {auth && (
             <div>
               <IconButton
                 size="large"
@@ -78,7 +70,6 @@ const [value, setValue] = React.useState(0);
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>
             </div>
-          )}
             </Toolbar>
             </AppBar>
         </Box>

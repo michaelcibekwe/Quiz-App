@@ -15,7 +15,6 @@ import { AppBar,
     TablePagination,
     TableRow
      } from '@mui/material';
-import Navbar from '../components/navbar/Navbar';
 
 
 const columns = [
@@ -60,8 +59,6 @@ const rows = [
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-       <Navbar />
-
       <Container maxWidth="lg">
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={6}>
